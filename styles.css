@@ -33,7 +33,7 @@ body {
   user-select: none;
 }
 header {
-  width: 95%;
+  width: 89%;
   height: 10vh;
   margin: auto;
   display: flex;
@@ -194,7 +194,7 @@ header {
   content: '</h1>';
   position: absolute;
   bottom: -10px;
-  right: -70px;
+  right: -10px;
   font-size: 1.2rem;
   font-family: 'La Belle Aurore', cursive;
   color: #666565;
@@ -594,6 +594,7 @@ textarea {
   header {
     justify-content: flex-end;
     align-items: flex-end;
+    width: 95%;
   }
   .btns-container {
     display: none;
@@ -694,6 +695,16 @@ textarea {
   }
   .skills-charts {
     margin-right: 20%;
+  }
+  .text-zone h1::after {
+    content: '</h1>';
+    position: absolute;
+    bottom: -10px;
+    right: -70px;
+    font-size: 1.2rem;
+    font-family: 'La Belle Aurore', cursive;
+    color: #666565;
+    letter-spacing: 3px;
   }
 
   /* media query for blog section */
