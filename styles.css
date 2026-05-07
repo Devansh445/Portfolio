@@ -10,20 +10,31 @@
 
 html{
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 body {
   font-family: sans-serif;
   color: rgb(255, 255, 255);
   background: rgb(29, 29, 29);
   overflow-x: hidden;
-  cursor: none;
-
+  min-width: 320px;
 }
 
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+a,
+.contact-button,
+.btns-container button,
+.nav-links a,
+.social-icons li a {
+  cursor: pointer;
+}
 
 .fake-big {
   display: block;
-  font-size: 10rem;
+  font-size: clamp(5rem, 18vw, 10rem);
   font-weight: bolder;
   position: absolute;
   /* // top: -100px; */
@@ -33,14 +44,15 @@ body {
   user-select: none;
 }
 header {
-  width: 89%;
+  width: 100%;
   height: 10vh;
-  margin: auto;
+  padding: 0 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: fixed;
   z-index: 2;
+  box-sizing: border-box;
 }
 #sound {
   padding: 7px;
@@ -73,8 +85,29 @@ header {
   color: #fff;
   cursor: pointer;
 }
-.btns-container .fas:nth-child(2) {
+.btns-container button {
+  background-color: #181818;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+.btns-container button:hover {
+  background-color: #1a1a1a;
+}
+.btns-container button:focus {
+  outline: 2px solid #08fdd8;
+  outline-offset: 2px;
+}
+.btns-container button:nth-child(2) {
   display: none;
+}
+.btns-container button i {
+  color: #fff;
+  font-size: 2rem;
 }
 
 /* aside section starts here */
@@ -172,12 +205,13 @@ header {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-left: 1.5rem;
+  padding: 5rem 1.5rem 1rem 1.5rem;
+  position: relative;
 }
 .text-zone h1 {
-  font-size: 3rem;
-  line-height: 45px;
-  letter-spacing: -3px;
+  font-size: clamp(2.4rem, 11vw, 3rem);
+  line-height: 0.95;
+  letter-spacing: 0;
   position: relative;
 }
 .text-zone h1::before {
@@ -207,7 +241,7 @@ header {
 .text-zone .gray-text {
   margin-top: 30px;
   color: #a2a2a3;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   font-size: 14px;
   position: relative;
 }
@@ -300,41 +334,52 @@ header {
 /* part 2 */
 
 #section-work {
-  padding: 5rem 0 5rem 1.5rem;
+  padding: 5rem 1rem;
   position: relative;
+  width: 100%;
+  box-sizing: border-box;
 }
 #header {
   font-size: 1.8rem;
   color: #08fdd8;
   margin-bottom: 30px;
 }
+.text-zone-2 {
+  width: 100%;
+  margin-bottom: 3rem;
+}
 .text-zone-2 p {
   line-height: 1.5;
+  font-size: 0.95rem;
+  max-width: 600px;
 }
 .fake-big-2 {
-  font-size: 12rem;
+  font-size: clamp(5rem, 22vw, 8rem);
   font-weight: 700;
   position: absolute;
   color: #2d2d2e;
-  left: 10px;
-  bottom: -70px;
-  letter-spacing: -10px;
+  left: 0;
+  bottom: -50px;
+  letter-spacing: 0;
   z-index: -999;
+  word-wrap: break-word;
 }
 .fake-magicwall {
   background-color: rgba(255, 255, 255, 0.1);
+  padding: 1rem 0;
+  overflow-x: hidden;
 }
 .fake-magicwall ul {
   list-style: none;
-  display: flex;
-  display: -ms-flexbox;
-  display: -webkit-box;
-  flex-wrap: wrap;
-  padding-left: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  padding-left: 1rem;
 }
 .fake-magicwall ul li {
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  aspect-ratio: 1;
   position: relative;
   overflow: hidden;
   display: list-item;
@@ -381,9 +426,11 @@ header {
 /* blog section */
 
 .section-blog {
-  width: 85%;
+  width: 100%;
   margin: 100px auto 0;
+  padding: 0 1.5rem;
   position: relative;
+  box-sizing: border-box;
 }
 .section-blog .fake-big-2 {
   font-size: 12rem;
@@ -427,21 +474,28 @@ header {
 /* part 3 section */
 
 #section-about {
-  padding-left: 1.5rem;
+  padding: 2rem 1.5rem;
   margin-top: 100px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   position: relative;
+  width: 100%;
+  box-sizing: border-box;
 }
 .text-zone3 p {
   margin-bottom: 15px;
   line-height: 1.5rem;
+  max-width: 62ch;
 }
 .tech {
   text-decoration: none;
   color: #08fdd8;
+}
+#myCanvas {
+  display: block;
+  max-width: 100%;
 }
 
 
@@ -449,15 +503,27 @@ header {
 .contact-heading {
   margin-bottom: 30px;
 }
+.contact-heading p {
+  max-width: 62ch;
+  line-height: 1.5;
+}
 .contact-section {
-  width: 85%;
-  margin: 0 auto;
+  width: 100%;
+  padding: 2rem 1.5rem;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   position: relative;
+  box-sizing: border-box;
+}
+.contact-form {
+  width: 100%;
+  max-width: 520px;
+}
+.form-input-wrapper {
+  width: 100%;
 }
 .form-input-group {
   width: 100%;
@@ -476,6 +542,7 @@ textarea {
   font-size: 0.957rem;
   box-shadow: 0 0 0px 1000px #2b2b2b inset;
   color: #8a8484;
+  box-sizing: border-box;
 }
 .form-input-group textarea {
   height: 25vh;
@@ -546,11 +613,14 @@ textarea {
 .google-map {
   width: 100%;
   position: relative;
+  margin-top: 2rem;
+  overflow: hidden;
 }
 .google-map iframe {
   width: 100%;
   margin-top: 50px;
   height: 60vh;
+  min-height: 300px;
 }
 .map-content {
   background-color: #000;
@@ -560,6 +630,7 @@ textarea {
   left: 40px;
   padding: 20px;
   backdrop-filter: blur(70%);
+  max-width: calc(100% - 80px);
 }
 .map-content span {
   font-size: 16px;
@@ -584,13 +655,15 @@ textarea {
     height: 5px;
     border-radius: 50%;
     background-color: #ff0505;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
 }
 
 /* contact section ends here. The Final Part */
 
 /* media section for bigger screens */
 
-@media screen and (min-width: 980px) {
+@media screen and (min-width: 1200px) {
   header {
     justify-content: flex-end;
     align-items: flex-end;
@@ -624,12 +697,12 @@ textarea {
 
   /* home section */
   #section-home {
-    padding-left: 11.5rem;
+    padding-left: clamp(9rem, 12vw, 11.5rem);
   }
   .text-zone h1 {
-    font-size: 6.3rem;
+    font-size: clamp(4.5rem, 8vw, 6.3rem);
     line-height: 85px;
-    letter-spacing: -6px;
+    letter-spacing: 0;
   }
   .text-zone img {
     width: 50px;
@@ -649,10 +722,10 @@ textarea {
   /* part 2 media query bigger screens starts here */
   #section-work {
     width: 100%;
-    margin: 0 30px 0 auto;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    padding: 5rem 0 5rem 11.5rem;
+    padding: 5rem 2rem 5rem clamp(9rem, 12vw, 11.5rem);
   }
   .text-zone-2 {
     display: flex;
@@ -663,38 +736,57 @@ textarea {
     font-size: 2.5rem;
   }
   .text-zone-2 p {
-    width: 700px;
+    width: 100%;
+    max-width: 700px;
     font-size: 14px;
     line-height: 1.5rem;
   }
   .fake-big-2 {
-    font-size: 25rem;
+    font-size: clamp(13rem, 24vw, 25rem);
     font-weight: 700;
-    left: 560px;
+    left: min(560px, 45vw);
     top: 0;
   }
   .fake-magicwall {
-    padding-left: 8.5rem;
+    padding-left: clamp(7rem, 10vw, 8.5rem);
+  }
+  .fake-magicwall ul {
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+    padding-left: 0;
   }
   .fake-magicwall ul li {
-    width: 217px;
-    height: 210px;
+    width: 100%;
   }
 
   /* media query for about section */
   #section-about {
     flex-direction: row;
-    padding-left: 11.5rem;
+    gap: 3rem;
+    padding: 2rem 2rem 2rem clamp(9rem, 12vw, 11.5rem);
+    align-items: center;
   }
   .text-zone3 #header {
-    width: 500px;
+    width: min(500px, 100%);
     font-size: 3rem;
   }
   .text-zone3 p {
-    width: 400px;
+    width: min(400px, 100%);
   }
   .skills-charts {
-    margin-right: 20%;
+    margin-right: 0;
+    flex: 1 1 360px;
+    min-width: 0;
+  }
+  #myCanvasContainer {
+    max-width: 500px;
+    width: 100%;
+  }
+  #myCanvas {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
   }
   .text-zone h1::after {
     content: '</h1>';
@@ -734,12 +826,14 @@ textarea {
   .contact-section {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: center;
     grid-column-gap: 2.5rem;
+    padding-left: clamp(9rem, 12vw, 11.5rem);
   }
   .contact-form {
-    width: 400px;
+    width: 100%;
+    max-width: 420px;
     margin: 0 0 0 auto;
   }
   .form-input-wrapper {
@@ -756,8 +850,433 @@ textarea {
   }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1199px) {
   .circle {
     display: none;
+  }
+}
+
+/* Tablet breakpoint */
+@media screen and (min-width: 480px) and (max-width: 1199px) {
+  header {
+    height: auto;
+    min-height: 72px;
+  }
+  #section-home {
+    padding: 6rem 2rem 3rem;
+  }
+  .text-zone h1 {
+    font-size: clamp(3rem, 10vw, 5rem);
+    line-height: 0.95;
+  }
+  .scroll-down {
+    display: none;
+  }
+  .aside {
+    z-index: 3;
+  }
+  header {
+    z-index: 4;
+  }
+  #section-work {
+    padding: 5rem 2rem;
+  }
+  .fake-big-2 {
+    font-size: 10rem;
+    left: 0;
+  }
+  .fake-magicwall ul {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+  #header {
+    font-size: 2rem;
+  }
+  .text-zone-2 p {
+    font-size: 0.95rem;
+    max-width: 100%;
+  }
+  .contact-section {
+    padding: 2rem;
+    min-height: auto;
+    align-items: stretch;
+  }
+  #section-about {
+    padding: 2rem;
+    margin-top: 60px;
+    gap: 2rem;
+  }
+  .form-input-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .contact-form {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .text-zone3 {
+    width: 100%;
+  }
+  .text-zone3 p {
+    width: 100%;
+  }
+  .skills-charts {
+    width: 100%;
+    margin-right: 0;
+    display: flex;
+    justify-content: center;
+  }
+  #myCanvasContainer {
+    width: min(100%, 500px);
+  }
+  #myCanvas {
+    width: 100%;
+    height: auto;
+  }
+  .google-map iframe {
+    height: 420px;
+    min-height: 360px;
+  }
+  .map-content {
+    max-width: calc(100% - 48px);
+    left: 24px;
+  }
+}
+
+/* Small phones */
+@media screen and (max-width: 479px) {
+  header {
+    height: auto;
+    min-height: 4.25rem;
+    padding: 0.75rem 1rem;
+    gap: 0.75rem;
+  }
+  .btns-container .fas,
+  .btns-container button i {
+    font-size: 1.35rem;
+  }
+  .btns-container {
+    display: flex;
+    align-items: center;
+  }
+  .btns-container button {
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    padding: 0.375rem;
+  }
+  .aside {
+    z-index: 3;
+    height: 0;
+  }
+  .aside-wrapper {
+    min-height: 100svh;
+    height: 100svh;
+  }
+  header {
+    z-index: 4;
+  }
+  .fake-big {
+    display: none;
+  }
+  .logo-section {
+    min-height: 11rem;
+  }
+  .nav-links a {
+    line-height: 2.75rem;
+    font-size: 0.95rem;
+  }
+  #section-home {
+    min-height: 100svh;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 5.5rem 1.125rem 2rem;
+  }
+  #section-work {
+    padding: 3.5rem 1.125rem 2rem;
+  }
+  .fake-magicwall ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+    padding: 0 1.125rem 1.25rem;
+  }
+  #header {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .text-zone {
+    width: min(100%, 19.5rem);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  .text-zone h1 {
+    font-size: clamp(2.35rem, 10.5vw, 2.95rem);
+    line-height: 0.98;
+    letter-spacing: 0;
+    max-width: 8ch;
+  }
+  .text-zone h1::before {
+    top: -1.75rem;
+    font-size: 0.85rem;
+    left: 0;
+  }
+  .text-zone h1::after {
+    bottom: -1.25rem;
+    left: 0;
+    right: auto;
+    font-size: 0.85rem;
+  }
+  .text-zone .gray-text {
+    margin-top: 1.5rem;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    letter-spacing: 0.08rem;
+    max-width: 15rem;
+  }
+  .contact-button {
+    max-width: 11rem;
+    height: 2.25rem;
+    margin-top: 1.75rem;
+    line-height: 2.25rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.08rem;
+  }
+  .scroll-down {
+    display: none !important;
+  }
+  .scroll-down--left {
+    display: none !important;
+  }
+  #sound {
+    font-size: 0.8125rem;
+    padding: 0.375rem 0.5rem;
+    gap: 0.25rem;
+  }
+  #sound > span {
+    display: none;
+  }
+  #sound .on-off {
+    display: flex;
+    gap: 0.25rem;
+    margin-left: 0;
+  }
+  #sound .on-off span {
+    display: inline;
+  }
+  .sound-cloud {
+    margin: 0;
+    font-size: 1rem;
+  }
+  .on-off {
+    font-size: 0.75rem;
+  }
+  .text-zone-2 {
+    margin-bottom: 1.75rem;
+  }
+  .text-zone-2 p {
+    max-width: none;
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+  .fake-magicwall ul li {
+    aspect-ratio: 0.94;
+  }
+  .contact-section {
+    padding: 2.5rem 1.125rem;
+    min-height: auto;
+    gap: 1.75rem;
+    align-items: stretch;
+  }
+  .contact-heading {
+    margin-bottom: 1.25rem;
+    text-align: left;
+  }
+  .contact-heading p {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+  }
+  .contact-form {
+    width: 100%;
+  }
+  .form-input-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .form-input-group input,
+  .form-input-group textarea {
+    padding: 0 0.875rem;
+    font-size: 0.9375rem;
+  }
+  .form-input-group textarea {
+    min-height: 12rem;
+    height: auto;
+    padding: 0.875rem;
+  }
+  .submit-button {
+    float: none;
+    margin-top: 1rem;
+    margin-left: auto;
+  }
+  .message {
+    position: static;
+    right: auto;
+    bottom: auto;
+    margin-top: 1rem;
+    transform: none;
+  }
+  .message-content {
+    padding: 0.875rem;
+    font-size: 0.875rem;
+  }
+  .map-content {
+    position: static;
+    max-width: none;
+    margin-top: 0;
+    padding: 1rem;
+    font-size: 0.8125rem;
+  }
+  .map-content p {
+    margin-bottom: 0.5rem;
+  }
+  .map-content span {
+    font-size: 0.875rem;
+    line-height: 1.45;
+  }
+  .google-map iframe {
+    height: 18rem;
+    min-height: 18rem;
+    margin-top: 0;
+  }
+  .text-zone3 {
+    width: 100%;
+  }
+  .text-zone3 p {
+    width: 100%;
+    font-size: 0.9375rem;
+    line-height: 1.65;
+  }
+  .skills-charts {
+    width: 100%;
+    margin-right: 0;
+    display: flex;
+    justify-content: center;
+  }
+  #myCanvasContainer {
+    width: min(100%, 20rem);
+  }
+  #myCanvas {
+    width: 100%;
+    height: auto;
+  }
+  #section-about {
+    margin-top: 3.5rem;
+    padding: 0 1.125rem 2.5rem;
+    gap: 1.75rem;
+    align-items: stretch;
+  }
+  .text-zone3 #header {
+    width: 100%;
+  }
+  body {
+    overflow-x: hidden;
+  }
+}
+
+@media screen and (max-width: 479px) and (max-height: 760px) {
+  .logo-section {
+    min-height: 9.5rem;
+  }
+  #section-home {
+    padding-top: 5rem;
+    padding-bottom: 1.5rem;
+  }
+  .text-zone h1 {
+    font-size: 2.25rem;
+  }
+  .text-zone .gray-text {
+    margin-top: 1.25rem;
+  }
+  .contact-button {
+    margin-top: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  header {
+    padding: 0.625rem 0.875rem;
+  }
+  #section-home {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  #section-work {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .fake-magicwall ul {
+    gap: 0.625rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  #section-about {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .contact-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  #myCanvasContainer {
+    width: min(100%, 18.75rem);
+  }
+  .google-map iframe {
+    height: 16rem;
+    min-height: 16rem;
+  }
+}
+
+@media screen and (min-width: 400px) and (max-width: 479px) {
+  #section-home {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-bottom: 2.5rem;
+  }
+  .text-zone {
+    width: min(100%, 22rem);
+  }
+  .text-zone h1 {
+    font-size: clamp(2.6rem, 9vw, 3.15rem);
+  }
+  .text-zone .gray-text {
+    max-width: 17rem;
+    font-size: 0.875rem;
+  }
+  #section-work {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .fake-magicwall ul {
+    gap: 0.875rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .fake-magicwall ul li {
+    aspect-ratio: 1;
+  }
+  #section-about {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  #myCanvasContainer {
+    width: min(100%, 22rem);
+  }
+  .contact-section {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .google-map iframe {
+    height: 20rem;
+    min-height: 20rem;
   }
 }
